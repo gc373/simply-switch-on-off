@@ -1,0 +1,9 @@
+[
+  {
+    "name": "light",
+    "append": true,
+    "watch": false,
+    "script": "main.js",
+    "cwd": "/home/pi/node/light/"
+  }
+]
