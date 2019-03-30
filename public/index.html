@@ -1,0 +1,76 @@
+<html>
+
+<head>
+	<title>Light On Off Switch</title>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	 crossorigin="anonymous">
+	<style>
+		.text {
+			font-size: 300%;
+			text-align: center;
+		}
+
+		.btn-real {
+			display: inline-block;
+			text-decoration: none;
+			color: rgba(16, 101, 46, 0.7);
+			width: 600px;
+			height: 600px;
+			line-height: 600px;
+			font-size: 400px;
+			border-radius: 50%;
+			text-align: center;
+			vertical-align: middle;
+			overflow: hidden;
+			font-weight: bold;
+			background-image: linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+			text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+			box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+			border-bottom: solid 2px #b5b5b5;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+
+		.btn-real i {
+			line-height: 600px;
+		}
+
+		.btn-real:active {
+			-webkit-tap-highlight-color:rgba(255, 255, 255, 0.5);
+			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+			border-bottom: none;
+		}
+	</style>
+
+	<script>
+		function switchOnOf() {
+			console.log("on click");
+			try {
+				$.post("./switch",
+					{ "device": "raspi" }
+					, response => console.log(response));
+				console.log('Completed!');
+			} catch (err) {
+				console.info(`Error: ${err}`);
+			}
+		}
+		$(document).ready(_ => {
+			$(document).on("click", "#onoff", switchOnOf);
+		});
+	</script>
+</head>
+
+<body>
+	<div class="text">
+		Light On Off Switch
+	</div>
+	<a id="onoff" href="#" class="btn-real">
+		<i class="fa fa-power-off"></i>
+	</a>
+</body>
+
+</html>
